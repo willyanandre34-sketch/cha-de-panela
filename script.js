@@ -1,52 +1,50 @@
-// CONFIGURAÇÃO DO FIREBASE
-const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_DOMINIO",
-  projectId: "SEU_PROJECT_ID",
-};
+body {
+  font-family: Arial, sans-serif;
+  background: #fff9c4;
+  margin: 0;
+}
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+nav {
+  background: #fdd835;
+  padding: 10px;
+  text-align: center;
+}
 
-const lista = document.getElementById("lista-presentes");
+nav button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-// Lista inicial de itens
-const presentes = [
-  "Jogo de Pratos",
-  "Conjunto de Copos",
-  "Panela",
-  "Liquidificador",
-  "Faqueiro"
-];
+.aba {
+  display: none;
+  padding: 20px;
+  text-align: center;
+}
 
-// Criar itens no banco (somente 1x)
-presentes.forEach(item => {
-  db.collection("presentes").doc(item).set({
-    nome: item,
-    escolhido: false
-  }, { merge: true });
-});
+.aba.ativa {
+  display: block;
+}
 
-// Ler itens em tempo real
-db.collection("presentes").onSnapshot(snapshot => {
-  lista.innerHTML = "";
-  snapshot.forEach(doc => {
-    const data = doc.data();
-    const li = document.createElement("li");
-    li.textContent = data.nome;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
 
-    if (data.escolhido) {
-      li.classList.add("escolhido");
-    } else {
-      li.onclick = () => escolherItem(doc.id);
-    }
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+}
 
-    lista.appendChild(li);
-  });
-});
+.card img {
+  width: 100%;
+  border-radius: 6px;
+}
 
-function escolherItem(id) {
-  db.collection("presentes").doc(id).update({
-    escolhido: true
-  });
+.card button {
+  margin-top: 10px;
 }
