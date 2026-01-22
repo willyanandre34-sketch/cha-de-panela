@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Chá de Panela</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1>💛 Chá de Panela</h1>
-    <p>Escolha um presente com carinho 💍</p>
+<nav>
+  <button onclick="mostrarAba('entrada')">Início</button>
+  <button onclick="mostrarAba('presentes')">Presentes</button>
+  <button onclick="mostrarAba('escolhidos')">Já Escolhidos</button>
+</nav>
 
-    <ul id="lista-presentes"></ul>
-  </div>
+<section id="entrada" class="aba ativa">
+  <h1>💛 Seja bem-vindo!</h1>
+  <p>
+    Obrigado por comprar nossos produtos e nos presentear.  
+    Sua presença e carinho significam muito para nós!
+  </p>
+  <button onclick="mostrarAba('presentes')">Escolher presente</button>
+</section>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<section id="presentes" class="aba">
+  <h2>🎁 Escolha um presente</h2>
+  <div id="lista-presentes" class="grid"></div>
+</section>
 
-  <script src="script.js"></script>
+<section id="escolhidos" class="aba">
+  <h2>✅ Presentes já escolhidos</h2>
+  <ul id="lista-escolhidos"></ul>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
+
