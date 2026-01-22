@@ -1,50 +1,67 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #fff9c4;
-  margin: 0;
+function trocarAba(id) {
+  document.querySelectorAll('.aba').forEach(aba =>
+    aba.classList.remove('ativa')
+  );
+  document.getElementById(id).classList.add('ativa');
 }
 
-nav {
-  background: #fdd835;
-  padding: 10px;
-  text-align: center;
+const presentes = [
+  {
+    nome: "Jogo de Pratos",
+    imagem: "https://via.placeholder.com/200",
+    escolhidoPor: null
+  },
+  {
+    nome: "Liquidificador",
+    imagem: "https://via.placeholder.com/200",
+    escolhidoPor: null
+  },
+  {
+    nome: "Conjunto de Copos",
+    imagem: "https://via.placeholder.com/200",
+    escolhidoPor: null
+  }
+];
+
+const lista = document.getElementById("lista-presentes");
+const listaEscolhidos = document.getElementById("lista-escolhidos");
+
+function renderizar() {
+  lista.innerHTML = "";
+  listaEscolhidos.innerHTML = "";
+
+  presentes.forEach(presente => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${presente.imagem}">
+      <h3>${presente.nome}</h3>
+      <p>${presente.escolhidoPor 
+        ? "Escolhido por " + presente.escolhidoPor 
+        : "Disponível"}
+      </p>
+    `;
+
+    if (!presente.escolhidoPor) {
+      const btn = document.createElement("button");
+      btn.textContent = "Escolher presente";
+      btn.onclick = () => {
+        const nome = prompt("Digite seu nome:");
+        if (nome) {
+          presente.escolhidoPor = nome;
+          renderizar();
+        }
+      };
+      card.appendChild(btn);
+    } else {
+      const li = document.createElement("li");
+      li.textContent = `${presente.nome} — ${presente.escolhidoPor}`;
+      listaEscolhidos.appendChild(li);
+    }
+
+    lista.appendChild(card);
+  });
 }
 
-nav button {
-  margin: 5px;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.aba {
-  display: none;
-  padding: 20px;
-  text-align: center;
-}
-
-.aba.ativa {
-  display: block;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-}
-
-.card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 10px;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 6px;
-}
-
-.card button {
-  margin-top: 10px;
-}
+renderizar();
