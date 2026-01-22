@@ -1,11 +1,9 @@
-/* FONTES */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background: #fff9c4; /* mantém amarelo claro */
 }
 
-/* NAV BAR */
 nav {
   background: #fdd835;
   padding: 10px;
@@ -27,7 +25,6 @@ nav button:hover {
   color: white;
 }
 
-/* ABAS */
 .aba {
   display: none;
   padding: 30px;
@@ -38,7 +35,6 @@ nav button:hover {
   display: block;
 }
 
-/* BOTÃO PRINCIPAL */
 .principal {
   margin-top: 20px;
   padding: 14px 25px;
@@ -55,7 +51,6 @@ nav button:hover {
   background: #fdd835;
 }
 
-/* GRID DE PRESENTES */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -63,7 +58,6 @@ nav button:hover {
   margin-top: 30px;
 }
 
-/* CARD DO PRESENTE */
 .card {
   background: #fff;
   border-radius: 15px;
@@ -110,7 +104,6 @@ nav button:hover {
   background: #fbc02d;
 }
 
-/* LISTA DE ESCOLHIDOS */
 #lista-escolhidos {
   list-style: none;
   padding: 0;
