@@ -1,3 +1,5 @@
+console.log("JS carregado corretamente!");
+
 // =======================
 // CONFIGURAÇÃO FIREBASE
 // =======================
@@ -16,7 +18,7 @@ const db = firebase.database();
 const presentesRef = db.ref('presentes');
 
 // =======================
-// ABAS
+// TROCAR ABAS
 // =======================
 function trocarAba(id) {
   document.querySelectorAll('.aba').forEach(aba => aba.classList.remove('ativa'));
@@ -24,7 +26,7 @@ function trocarAba(id) {
 }
 
 // =======================
-// RENDERIZAÇÃO
+// RENDERIZAÇÃO DE PRESENTES
 // =======================
 const lista = document.getElementById("lista-presentes");
 const listaEscolhidos = document.getElementById("lista-escolhidos");
